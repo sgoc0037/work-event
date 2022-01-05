@@ -1,0 +1,28 @@
+.squareColor {
+	padding-top: 100px;
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.item {
+	width: 20%;
+	height: 200px;
+	font-size: 35px;
+}
+.item:first-child {
+	background-color: #d73d6c
+}
+.item:nth-child(2) {
+	background-color: #d57276;
+}
+.item:nth-child(3) {
+	background-color: #d6c2bc;
+}
+.item:nth-child(4) {
+	background-color: #c0cccc;
+}
+.item:last-child {
+	background-color: #65b2c6;
+}
