@@ -12,7 +12,7 @@ export enum LoginActionType {
 
 interface SetLogin {
     type: LoginActionType.SETLOGIN,
-    data: {}
+    data: LoginAction
 }
 
 export type LoginState = SetLogin

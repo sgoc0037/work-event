@@ -8,7 +8,7 @@ export const fetchLogin = () => {
     return async (dispatch: Dispatch<LoginState>) => {
         let response = await profileAPI.getLogin()
         if (response.data) {
-            dispatch({ type: LoginActionType.SETLOGIN, data: response.data })
+            dispatch({ type: LoginActionType.SETLOGIN, data: response.data.data,isAuth:true})
         }
     }
 }
