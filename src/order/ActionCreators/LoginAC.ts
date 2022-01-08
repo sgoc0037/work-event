@@ -8,7 +8,7 @@ export const fetchLogin = () => {
     return async (dispatch: Dispatch<LoginState>) => {
         let response = await profileAPI.getLogin()
         if (response.data) {
-            dispatch({ type: LoginActionType.SETLOGIN, data: response.data.data,isAuth:true})
+            dispatch({ type: LoginActionType.SETLOGIN, data: response.data, isAuth: true })
         }
     }
 }
@@ -23,10 +23,15 @@ export const logoutLogin = () => {
 }
 
 export const sendAuth = ({ login, password, rememberMe }: FormDataType) => {
-    return async () => {
+    return async (dispatch: Dispatch<LoginState>) => {
         let response = await profileAPI.authLogin(login, password, rememberMe);
-        if (response.data.resultCode === '0') {
-            fetchLogin()
+        if (response.data.resultCode === 0) {
+            dispatch({
+                type: LoginActionType.SETLOGIN, data: {
+                    currentId: response.data.data.userId,
+                    isAuth: true
+                }
+            })
         }
     }
 }

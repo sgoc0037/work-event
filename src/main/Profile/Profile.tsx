@@ -9,10 +9,11 @@ export const Profile: FC = () => {
 
     const { aboutMe, fullName, lookingForAJob, lookingForAJobDescription }
         = useTypeSelector(state => state.profile.profile)
+    const { currentId } = useTypeSelector(state => state.login)
     const { fieldProfile } = useActionsCreators()
 
     useEffect(() => {
-        fieldProfile(2)
+        fieldProfile(currentId)
     }, [])
 
     return (

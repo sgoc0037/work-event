@@ -61,7 +61,7 @@ export let profileAPI = {
 			})
 	},
 	authLogin(email:string, password:string, rememberMe:boolean) {
-		debugger
+		
 		return instance.post(`/auth/login`, { email, password, rememberMe })
 			.then(response => {
 				return response

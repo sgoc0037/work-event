@@ -1,8 +1,6 @@
 
 export interface LoginAction {
-    email: string,
-    login: string,
-    isFetching: boolean,
+    currentId: number
     isAuth: boolean
 }
 
