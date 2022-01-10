@@ -1,20 +1,11 @@
-import { Badge, Descriptions } from 'antd';
-
-import React, { FC, useEffect } from 'react';
-import { useActionsCreators } from '../../hooks/useActionCreator';
-import { useTypeSelector } from '../../hooks/useTypeSelector';
+import { Descriptions } from 'antd';
+import { FC } from 'react';
+import { ProfileWrapper } from '../../types/ProfileType';
 import style from './Profile.module.css';
 
-export const Profile: FC = () => {
-
-    const { aboutMe, fullName, lookingForAJob, lookingForAJobDescription }
-        = useTypeSelector(state => state.profile.profile)
-    const { currentId } = useTypeSelector(state => state.login)
-    const { fieldProfile } = useActionsCreators()
-
-    useEffect(() => {
-        fieldProfile(currentId)
-    }, [])
+export const Profile: FC<ProfileWrapper> = (
+    { aboutMe, fullName, lookingForAJob, lookingForAJobDescription }
+) => {
 
     return (
         <Descriptions title="User Info" layout="vertical" bordered>

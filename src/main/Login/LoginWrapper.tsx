@@ -1,21 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Button } from 'antd';
-import { Link } from 'react-router-dom';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import { useActionsCreators } from '../../hooks/useActionCreator';
+import { Login } from './Login';
 
-let LoginWrapper: FC = () => {
+export const LoginWrapper: FC = () => {
 
     const {isAuth} = useTypeSelector(state=> state.login);
     const {fetchLogin,logoutLogin} = useActionsCreators();
 
-    fetchLogin()
+    useEffect(()=> {
+        fetchLogin()
+    },[])
 
     return (
         !isAuth
-            ? <Button type='primary'>
-                <Link to="/Login">Log in</Link>
-            </Button >
+            ? <Login/>
             : <Button type='primary'
                 onClick={() => logoutLogin()}>
                 Logout</Button>

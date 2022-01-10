@@ -44,3 +44,11 @@ export interface ProfileType {
         large?: Blob
     }
 }
+
+export interface ProfileWrapper {
+    aboutMe: string,
+    fullName: string,
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+
+}

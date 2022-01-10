@@ -8,9 +8,8 @@ export enum LoginActionType {
     SETLOGIN = 'SETLOGIN'
 }
 
-interface SetLogin {
-    type: LoginActionType.SETLOGIN,
-    data: LoginAction
+interface SetLogin extends LoginAction {
+    type: LoginActionType.SETLOGIN   
 }
 
 export type LoginState = SetLogin

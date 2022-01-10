@@ -6,11 +6,11 @@ export const initialState:LoginAction = {
 }
 
 export let loginReducer = (state = initialState,action:LoginState):LoginAction=> {
-	debugger
+	
 	switch(action.type) {
 		case LoginActionType.SETLOGIN:
 			console.log(state)
-			return {...state,...action.data}
+			return {...state,...action}
 		default: return state;			
 	}
 }

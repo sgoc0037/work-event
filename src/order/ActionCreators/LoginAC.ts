@@ -2,13 +2,20 @@ import { Dispatch } from "redux"
 import { profileAPI } from "../../API/REST-API"
 import { LoginActionType, LoginState } from "../../types/LoginType"
 import { FormDataType } from "../../types/types"
-import { initialState } from "../reducers/Login-reducer"
+
+const LoginActionDispatch = (id:number,auth:boolean) => {
+    return {
+        type: LoginActionType.SETLOGIN,
+        currentId:id,
+        isAuth:auth
+    }
+}
 
 export const fetchLogin = () => {
     return async (dispatch: Dispatch<LoginState>) => {
         let response = await profileAPI.getLogin()
-        if (response.data) {
-            dispatch({ type: LoginActionType.SETLOGIN, data: response.data, isAuth: true })
+        if (response.data.resultCode === 0) {
+            dispatch(LoginActionDispatch(response.data.data.id, true))
         }
     }
 }
@@ -16,8 +23,8 @@ export const fetchLogin = () => {
 export const logoutLogin = () => {
     return async (dispatch: Dispatch<LoginState>) => {
         let response = await profileAPI.logout()
-        if (response.data.resultCode === '0') {
-            dispatch({ type: LoginActionType.SETLOGIN, data: initialState })
+        if (response.data.resultCode === 0) {
+            dispatch(LoginActionDispatch(NaN,false))
         }
     }
 }
@@ -26,12 +33,7 @@ export const sendAuth = ({ login, password, rememberMe }: FormDataType) => {
     return async (dispatch: Dispatch<LoginState>) => {
         let response = await profileAPI.authLogin(login, password, rememberMe);
         if (response.data.resultCode === 0) {
-            dispatch({
-                type: LoginActionType.SETLOGIN, data: {
-                    currentId: response.data.data.userId,
-                    isAuth: true
-                }
-            })
+            dispatch(LoginActionDispatch(response.data.data.userId,true))
         }
     }
 }

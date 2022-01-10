@@ -19,8 +19,6 @@ export const Login: FC = ({ children }) => {
         sendAuth({login,password,rememberMe})
     }
 
-
-
     return <form className={style.login} >
         <Controller
             name="login"

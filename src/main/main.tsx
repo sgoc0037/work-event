@@ -4,8 +4,10 @@ import style from './main.module.css';
 import Colors from './Colors/colors';
 import { Route, Routes } from 'react-router-dom';
 import { Login } from './Login/Login';
-import { Profile } from './Profile/Profile';
 import { RequiredAuth } from '../HOC/RequiredAuth';
+import { UsersWrapper } from './Users/UsersWrapper';
+import { ProfileWrapper } from './Profile/ProfileWrapper';
+import { LoginWrapper } from './Login/LoginWrapper';
 
 
 const Main: FC = (props: any) => {
@@ -43,10 +45,15 @@ const Main: FC = (props: any) => {
         <Button onClick={() => setCurrentMonth(moment(currentMonth).add(1, 'M'))}>right</Button> */}
         <Routes>
             <Route path={'/Color'} element={<Colors />} />
-            <Route path={'/Login'} element={<Login />} />
+            <Route path={'/Login'} element={<LoginWrapper />} />
             <Route path={'/Profile'} element={
                 <RequiredAuth>
-                    <Profile />
+                    <ProfileWrapper />
+                </RequiredAuth>
+            } />
+            <Route path={'/Users'} element={
+                <RequiredAuth>
+                    <UsersWrapper />
                 </RequiredAuth>
             } />
         </Routes>
