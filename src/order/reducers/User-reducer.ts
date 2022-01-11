@@ -10,6 +10,7 @@ const initialState: UserAction = {
 }
 
 export const userReducer = (state = initialState, action: UserState): UserAction => {
+    debugger
     switch (action.type) {
         case UserActionType.FOLLOW:
             return {

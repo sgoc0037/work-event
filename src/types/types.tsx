@@ -21,3 +21,11 @@ export interface FormDataType {
     rememberMe: boolean
 }
 
+export interface UserTypes {
+    id: number,
+    image: string,
+    name: string,
+    status: string,
+    followed: boolean,
+    followingProgress: number[]
+}

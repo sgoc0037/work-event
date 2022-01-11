@@ -15,28 +15,27 @@ export let userAPI = {
 				return response.data
 			})
 	},
-	getNextUsersPage(value:number, userPage:number) {
+	getNextUsersPage(value: number, userPage: number) {
 		return instance.get(`users?page=${value}&count=${userPage}`)
 			.then(response => {
 				return response.data
 			})
 	},
-	postUsersFollowing(item:number, value:string) {
-		if (value === 'delete') {
-			return instance.delete(`/follow/` + item)
-				.then(response => {
-					return response
-				})
-		} else if (value === 'post') {
-			return instance.post(`/follow/` + item)
-				.then(response => {
-					return response
-				})
-		}
+	postUsersFollowing(id: number) {
+		return instance.delete(`/follow/` + id)
+			.then(response => {
+				return response
+			})
+	},
+	deleteUsersFollowing(id: number) {
+		return instance.post(`/follow/` + id)
+			.then(response => {
+				return response
+			})
 	}
 }
 export let profileAPI = {
-	getProfile(selectedUserId:number) {
+	getProfile(selectedUserId: number) {
 		return instance.get(`/Profile/` + selectedUserId)
 			.then(response => {
 				return response.data
@@ -48,20 +47,20 @@ export let profileAPI = {
 				return response
 			})
 	},
-	getStatus(selectedUserId:number) {
+	getStatus(selectedUserId: number) {
 		return instance.get(`/Profile/status/` + selectedUserId)
 			.then(response => {
 				return response
 			})
 	},
-	uppdateStatus(status:string) {
+	uppdateStatus(status: string) {
 		return instance.put(`/Profile/status`, { status })
 			.then(response => {
 				return response
 			})
 	},
-	authLogin(email:string, password:string, rememberMe:boolean) {
-		
+	authLogin(email: string, password: string, rememberMe: boolean) {
+
 		return instance.post(`/auth/login`, { email, password, rememberMe })
 			.then(response => {
 				return response
@@ -73,7 +72,7 @@ export let profileAPI = {
 				return response
 			})
 	},
-	savePhotos(file:Blob) {
+	savePhotos(file: Blob) {
 		let formData = new FormData()
 		formData.append('image', file)
 		return instance.put(`/Profile/photo`, formData, {
@@ -82,7 +81,7 @@ export let profileAPI = {
 			}
 		})
 	},
-	saveProfile(obj:{}) {
+	saveProfile(obj: {}) {
 		return instance.put(`/Profile`, obj)
 			.then(response => {
 				return response

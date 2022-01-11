@@ -38,7 +38,7 @@ interface ToggleIsFetching {
 interface ToggleIsFollowing {
     type: UserActionType.TOGGLEISFOLLOWING,
     userId: number,
-    following:boolean
+    following: boolean
 }
 
 export type UserState = Unfollow | Follow | SetCurrent
