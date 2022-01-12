@@ -21,7 +21,7 @@ interface Follow {
 }
 interface SetUsers {
     type: UserActionType.SETUSERS,
-    users: object[]
+    users: []
 }
 interface SetCurrent {
     type: UserActionType.SETCURRENT,
@@ -45,7 +45,7 @@ export type UserState = Unfollow | Follow | SetCurrent
     | SetTotalCount | SetUsers | ToggleIsFetching | ToggleIsFollowing
 
 export interface UserAction {
-    users: object[],
+    users: [],
     userPage: number,
     totalCount: number,
     currentPage: number,

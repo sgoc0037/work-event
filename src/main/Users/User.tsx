@@ -16,7 +16,7 @@ const User: FC<UserProps> = (
     return <div key={props.id}>
         <div>
             <Link to={'Profile/' + props.id}>
-                <img src={props.image} alt='default user' />
+                {/* <img src={propszimage} alt='default user' /> */}
             </Link>
         </div>
         <div>

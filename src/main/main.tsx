@@ -8,9 +8,16 @@ import { RequiredAuth } from '../HOC/RequiredAuth';
 import { UsersWrapper } from './Users/UsersWrapper';
 import { ProfileWrapper } from './Profile/ProfileWrapper';
 import { LoginWrapper } from './Login/LoginWrapper';
+import { useActionsCreators } from '../hooks/useActionCreator';
 
 
 const Main: FC = (props: any) => {
+
+    const { getUsers } = useActionsCreators()
+
+    useEffect(() => {
+        getUsers()
+    }, [])
 
     // const [daysInMonth, setDaysInMonth] = useState<object[]>([]);
     // const [currentMonth, setCurrentMonth] = useState<object>({});

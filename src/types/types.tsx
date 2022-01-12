@@ -22,10 +22,9 @@ export interface FormDataType {
 }
 
 export interface UserTypes {
-    id: number,
-    image: string,
-    name: string,
-    status: string,
     followed: boolean,
-    followingProgress: number[]
+    id: number,
+    name: string,
+    photos: {},
+    status: string
 }
