@@ -35,17 +35,23 @@ interface ToggleIsFetching {
     type: UserActionType.TOGGLEISFETCHING,
     userId: boolean
 }
-interface ToggleIsFollowing {
-    type: UserActionType.TOGGLEISFOLLOWING,
-    userId: number,
-    following: boolean
-}
 
 export type UserState = Unfollow | Follow | SetCurrent
-    | SetTotalCount | SetUsers | ToggleIsFetching | ToggleIsFollowing
+    | SetTotalCount | SetUsers | ToggleIsFetching
 
+
+export interface UserTypes {
+    followed: boolean,
+    id: number,
+    name: string,
+    photos: {
+        large: string
+        small: string
+    },
+    status: string
+}
 export interface UserAction {
-    users: [],
+    users: UserTypes[],
     userPage: number,
     totalCount: number,
     currentPage: number,

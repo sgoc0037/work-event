@@ -22,13 +22,13 @@ export let userAPI = {
 			})
 	},
 	postUsersFollowing(id: number) {
-		return instance.delete(`/follow/` + id)
+		return instance.post(`/follow/` + id)
 			.then(response => {
 				return response
 			})
 	},
 	deleteUsersFollowing(id: number) {
-		return instance.post(`/follow/` + id)
+		return instance.delete(`/follow/` + id)
 			.then(response => {
 				return response
 			})

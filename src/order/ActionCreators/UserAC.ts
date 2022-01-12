@@ -15,7 +15,7 @@ export const postFollowing = (id: number) => {
     return async (dispatch: Dispatch<UserState>) => {
         let response = await userAPI.postUsersFollowing(id);
         if (response.data.resultCode === 0) {
-            dispatch({ type: UserActionType.FOLLOW, userId: response.data, following: true })
+            dispatch({ type: UserActionType.FOLLOW, userId: id, following: true })
         }
     }
 }
@@ -24,7 +24,7 @@ export const deleteFollowing = (id: number) => {
     return async (dispatch: Dispatch<UserState>) => {
         let response = await userAPI.deleteUsersFollowing(id)
         if (response.data.resultCode === 0) {
-            dispatch({ type: UserActionType.UNFOLLOW, userId: response.data, following: false })
+            dispatch({ type: UserActionType.UNFOLLOW, userId: id, following: false })
         }
     }
 }

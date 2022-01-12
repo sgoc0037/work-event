@@ -20,11 +20,3 @@ export interface FormDataType {
     password: string,
     rememberMe: boolean
 }
-
-export interface UserTypes {
-    followed: boolean,
-    id: number,
-    name: string,
-    photos: {},
-    status: string
-}

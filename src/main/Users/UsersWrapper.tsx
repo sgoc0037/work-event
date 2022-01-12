@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useActionsCreators } from '../../hooks/useActionCreator'
 import { useTypeSelector } from '../../hooks/useTypeSelector'
-import { UserTypes } from '../../types/types'
+import { UserTypes } from '../../types/UserType'
 import User from './User'
 import Users from './Users'
 

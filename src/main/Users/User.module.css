@@ -1,0 +1,35 @@
+.card {
+    position: relative;
+    width: 25%;
+    height: 40%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #f7f5ec;
+    overflow: hidden;
+}
+.card__imgContainer {
+    padding: 20px 0 0;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+    z-index: 5;
+}
+.card__imgContainer > img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.card__mainInfo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.7;
+}
+.card__name {
+    font-size: 24px;
+}
+.card__status {
+    font-size: 16px;
+}
