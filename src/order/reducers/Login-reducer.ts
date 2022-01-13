@@ -1,7 +1,7 @@
 import { LoginAction, LoginActionType, LoginState } from "../../types/LoginType";
 
 export const initialState:LoginAction = {
-	currentId: NaN,
+	authId: NaN,
 	isAuth: false
 }
 

@@ -6,7 +6,7 @@ import { FormDataType } from "../../types/types"
 const LoginActionDispatch = (id:number,auth:boolean) => {
     return {
         type: LoginActionType.SETLOGIN,
-        currentId:id,
+        authId:id,
         isAuth:auth
     }
 }

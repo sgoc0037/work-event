@@ -2,13 +2,15 @@
 export interface ProfileAction {
     profile: ProfileType,
     status: string,
-    authMeId?: boolean
+    authMeId?: boolean,
+    currentId: number
 }
 
 export enum ProfileActionType {
     SETPROFILE = 'SETPROFILE',
     SETSTATUS = 'SETSTATUS',
-    SETPHOTOS = 'SETPHOTOS'
+    SETPHOTOS = 'SETPHOTOS',
+    SETCURRENTID = 'SETCURRENTID'
 }
 interface SetProfileType {
     type: ProfileActionType.SETPROFILE,
@@ -22,7 +24,11 @@ interface SetPhotoType {
     type: ProfileActionType.SETPHOTOS,
     photos: {}
 }
-export type ProfileState = SetProfileType | SetStatusType | SetPhotoType;
+interface SetCurrentIdType {
+    type:ProfileActionType.SETCURRENTID,
+    currentId: number
+}
+export type ProfileState = SetProfileType | SetStatusType | SetPhotoType | SetCurrentIdType;
 
 export interface ProfileType {
     aboutMe: string,
@@ -50,5 +56,4 @@ export interface ProfileWrapper {
     fullName: string,
     lookingForAJob: boolean
     lookingForAJobDescription: string
-
 }

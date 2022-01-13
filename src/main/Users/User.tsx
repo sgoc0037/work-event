@@ -8,15 +8,16 @@ import style from './User.module.css'
 interface UserProps {
     props: UserTypes,
     follow: (id: number) => void,
-    unfollow: (id: number) => void
+    unfollow: (id: number) => void,
+    sendId: (id: number) => void
 }
 
-const User: FC<UserProps> = ({ props, follow, unfollow }) => {
+const User: FC<UserProps> = ({ props, follow, unfollow, sendId }) => {
 
-    const [disabledBtn,setDisabledBtn] = useState<boolean>(false)
-    const Guardian = ()=> {
+    const [disabledBtn, setDisabledBtn] = useState<boolean>(false)
+    const Guardian = () => {
         setDisabledBtn(true)
-        setTimeout(()=> setDisabledBtn(false),1000)
+        setTimeout(() => setDisabledBtn(false), 1000)
     }
 
     const img: string = props.photos.large
@@ -27,7 +28,11 @@ const User: FC<UserProps> = ({ props, follow, unfollow }) => {
 
     return <div className={style.card} key={props.id}>
         <div>
-            <Link to={'Profile/' + props.id} className={style.card__imgContainer}>
+            <Link
+                to={'/Profile/' + props.id}
+                className={style.card__imgContainer}
+                onClick={() => sendId(props.id)}
+            >
                 <img src={img} alt='default user' />
             </Link>
         </div>

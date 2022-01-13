@@ -7,11 +7,7 @@ import { Login } from './Login';
 export const LoginWrapper: FC = () => {
 
     const {isAuth} = useTypeSelector(state=> state.login);
-    const {fetchLogin,logoutLogin} = useActionsCreators();
-
-    useEffect(()=> {
-        fetchLogin()
-    },[])
+    const {logoutLogin} = useActionsCreators();
 
     return (
         !isAuth

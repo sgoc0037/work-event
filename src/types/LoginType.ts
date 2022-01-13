@@ -1,6 +1,6 @@
 
 export interface LoginAction {
-    currentId: number
+    authId: number
     isAuth: boolean
 }
 

@@ -9,14 +9,16 @@ import { UsersWrapper } from './Users/UsersWrapper';
 import { ProfileWrapper } from './Profile/ProfileWrapper';
 import { LoginWrapper } from './Login/LoginWrapper';
 import { useActionsCreators } from '../hooks/useActionCreator';
+import { useTypeSelector } from '../hooks/useTypeSelector';
 
 
 const Main: FC = (props: any) => {
 
-    const { getUsers } = useActionsCreators()
+    const { currentId } = useTypeSelector((state => state.profile))
+    const { fetchLogin } = useActionsCreators()
 
     useEffect(() => {
-        getUsers()
+        fetchLogin()
     }, [])
 
     // const [daysInMonth, setDaysInMonth] = useState<object[]>([]);
@@ -63,6 +65,7 @@ const Main: FC = (props: any) => {
                     <UsersWrapper />
                 </RequiredAuth>
             } />
+            <Route path={`/Profile/${currentId}`} element={<ProfileWrapper />} />
         </Routes>
     </div>
 }
