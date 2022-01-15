@@ -2,6 +2,7 @@ import { Dispatch } from "redux"
 import { profileAPI } from "../../API/REST-API"
 import { LoginActionType, LoginState } from "../../types/LoginType"
 import { FormDataType } from "../../types/types"
+import { fieldProfile } from "./ProfileAC"
 
 const LoginActionDispatch = (id:number,auth:boolean) => {
     return {

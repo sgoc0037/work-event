@@ -10,16 +10,24 @@ import { ProfileWrapper } from './Profile/ProfileWrapper';
 import { LoginWrapper } from './Login/LoginWrapper';
 import { useActionsCreators } from '../hooks/useActionCreator';
 import { useTypeSelector } from '../hooks/useTypeSelector';
+import { Settings } from './Settings/Settings';
+import axios from 'axios';
 
 
 const Main: FC = (props: any) => {
 
-    const { currentId } = useTypeSelector((state => state.profile))
-    const { fetchLogin } = useActionsCreators()
+    const { fetchLogin, fieldProfile } = useActionsCreators()
+    const { isAuth, authId } = useTypeSelector(state => state.login)
 
     useEffect(() => {
         fetchLogin()
     }, [])
+
+    useEffect(() => {
+        if (!isNaN(authId)) {
+            fieldProfile(authId)
+        }
+    }, [authId])
 
     // const [daysInMonth, setDaysInMonth] = useState<object[]>([]);
     // const [currentMonth, setCurrentMonth] = useState<object>({});
@@ -63,6 +71,11 @@ const Main: FC = (props: any) => {
             <Route path={'/Users'} element={
                 <RequiredAuth>
                     <UsersWrapper />
+                </RequiredAuth>
+            } />
+            <Route path={'/Settings'} element={
+                <RequiredAuth>
+                    <Settings />
                 </RequiredAuth>
             } />
         </Routes>
