@@ -1,27 +1,19 @@
 import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { useActionsCreators } from '../../hooks/useActionCreator'
 import { useTypeSelector } from '../../hooks/useTypeSelector'
 import { Profile } from './Profile'
 
 export const ProfileWrapper = () => {
 
+    const { id } = useParams()
     const { aboutMe, fullName, lookingForAJob, lookingForAJobDescription, }
         = useTypeSelector(state => state.profile.profile)
-    const { currentId } = useTypeSelector(state => state.profile)
-    const { authId } = useTypeSelector(state => state.login)
     const { fieldProfile } = useActionsCreators()
 
-    const fetchId = (): number => {
-        
-        if (!isNaN(currentId)) {
-            return currentId
-        }
-        return authId
-    }
-
     useEffect(() => {
-        fieldProfile(fetchId())
-    }, [])
+        fieldProfile(Number(id))
+    }, [id])
 
     return <Profile
         aboutMe={aboutMe}

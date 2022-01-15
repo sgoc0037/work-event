@@ -10,12 +10,14 @@ import {
     MailOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { useTypeSelector } from '../hooks/useTypeSelector';
 
 const { SubMenu } = Menu;
 
 const Sidebar = () => {
 
     const [collapsed, setCollapsed] = useState<boolean>(false);
+    const { authId} = useTypeSelector(state=> state.login)
 
     return <div style={{ width: 256 }}>
         <Button type="primary" onClick={() => setCollapsed(!collapsed)} style={{ marginBottom: 16 }}>
@@ -40,7 +42,7 @@ const Sidebar = () => {
             <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
                 <Menu.Item key="5"><Link to='Color'>Color</Link></Menu.Item>
                 <Menu.Item key="4"><Link to='Login'>Login</Link></Menu.Item>
-                <Menu.Item key="3"><Link to='Profile'>Profile</Link></Menu.Item>
+                <Menu.Item key="3"><Link to={`Profile/${authId}`}>Profile</Link></Menu.Item>
                 <Menu.Item key="2"><Link to='Users'>Users</Link></Menu.Item>
             </SubMenu>
             <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">

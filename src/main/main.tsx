@@ -55,7 +55,7 @@ const Main: FC = (props: any) => {
         <Routes>
             <Route path={'/Color'} element={<Colors />} />
             <Route path={'/Login'} element={<LoginWrapper />} />
-            <Route path={'/Profile'} element={
+            <Route path={'/Profile/:id'} element={
                 <RequiredAuth>
                     <ProfileWrapper />
                 </RequiredAuth>
@@ -65,7 +65,6 @@ const Main: FC = (props: any) => {
                     <UsersWrapper />
                 </RequiredAuth>
             } />
-            <Route path={`/Profile/${currentId}`} element={<ProfileWrapper />} />
         </Routes>
     </div>
 }

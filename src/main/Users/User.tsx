@@ -29,7 +29,7 @@ const User: FC<UserProps> = ({ props, follow, unfollow, sendId }) => {
     return <div className={style.card} key={props.id}>
         <div>
             <Link
-                to={'/Profile/' + props.id}
+                to={`/Profile/${props.id}`}
                 className={style.card__imgContainer}
                 onClick={() => sendId(props.id)}
             >
