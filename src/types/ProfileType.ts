@@ -22,7 +22,10 @@ interface SetStatusType {
 }
 interface SetPhotoType {
     type: ProfileActionType.SETPHOTOS,
-    photos: {}
+    photos: {
+        small: string
+        large: string
+    }
 }
 interface SetCurrentIdType {
     type: ProfileActionType.SETCURRENTID,
@@ -49,8 +52,8 @@ export interface commonProfileType {
 export interface ProfileType extends commonProfileType {
     aboutMe: string,
     photos: {
-        small?: Blob
-        large?: Blob
+        small: string
+        large: string
     }
 }
 
@@ -58,9 +61,3 @@ export interface SaveProfiletype extends commonProfileType {
     userId: number
 }
 
-export interface ProfileWrapper {
-    aboutMe: string,
-    fullName: string,
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-}

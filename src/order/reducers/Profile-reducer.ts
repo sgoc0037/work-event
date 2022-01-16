@@ -17,8 +17,8 @@ const initialState: ProfileAction = {
             mainLink: '',
         },
         photos: {
-            small: undefined,
-            large: undefined
+            small: '',
+            large: ''
         }
     },
     status: '',

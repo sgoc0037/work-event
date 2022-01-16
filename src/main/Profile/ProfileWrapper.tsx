@@ -7,7 +7,7 @@ import { Profile } from './Profile'
 export const ProfileWrapper = () => {
 
     const { id } = useParams()
-    const { aboutMe, fullName, lookingForAJob, lookingForAJobDescription, }
+    const { aboutMe, fullName, lookingForAJob, lookingForAJobDescription, contacts,photos}
         = useTypeSelector(state => state.profile.profile)
     const { fieldProfile } = useActionsCreators()
 
@@ -20,5 +20,7 @@ export const ProfileWrapper = () => {
         fullName={fullName}
         lookingForAJob={lookingForAJob}
         lookingForAJobDescription={lookingForAJobDescription}
+        contacts={contacts}
+        photos={photos}
     />
 }

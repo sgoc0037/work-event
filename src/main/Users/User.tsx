@@ -12,6 +12,15 @@ interface UserProps {
     sendId: (id: number) => void
 }
 
+export const responseImage = (photos: {large: string,small: string}) => {
+    
+    return photos.large
+        ? photos.large
+        : photos.small
+            ? photos.small
+            : image;
+}
+
 const User: FC<UserProps> = ({ props, follow, unfollow, sendId }) => {
 
     const [disabledBtn, setDisabledBtn] = useState<boolean>(false)
@@ -20,12 +29,6 @@ const User: FC<UserProps> = ({ props, follow, unfollow, sendId }) => {
         setTimeout(() => setDisabledBtn(false), 1000)
     }
 
-    const img: string = props.photos.large
-        ? props.photos.large
-        : props.photos.small
-            ? props.photos.small
-            : image;
-
     return <div className={style.card} key={props.id}>
         <div>
             <Link
@@ -33,7 +36,7 @@ const User: FC<UserProps> = ({ props, follow, unfollow, sendId }) => {
                 className={style.card__imgContainer}
                 onClick={() => sendId(props.id)}
             >
-                <img src={img} alt='default user' />
+                <img src={responseImage(props.photos)} alt='default user' />
             </Link>
         </div>
         <div className={style.card__mainInfo}>

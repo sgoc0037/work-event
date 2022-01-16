@@ -1,26 +1,17 @@
-import { Descriptions } from 'antd';
 import { FC } from 'react';
-import { ProfileWrapper } from '../../types/ProfileType';
-import style from './Profile.module.css';
+import { ProfileType } from '../../types/ProfileType';
+import { responseImage } from '../Users/User';
 
-export const Profile: FC<ProfileWrapper> = (
-    { aboutMe, fullName, lookingForAJob, lookingForAJobDescription }
-) => {
+export const Profile: FC<ProfileType> = (props) => {
 
-    return (
-        <Descriptions title="User Info" layout="vertical" bordered>
-            <Descriptions.Item label="About Me">{aboutMe}</Descriptions.Item>
-            <Descriptions.Item label="Full Name">{fullName}</Descriptions.Item>
-            <Descriptions.Item
-                label="Looking for a job">
-                {
-                    lookingForAJob ? 'Yes' : 'No'
-                }
-            </Descriptions.Item>
-            {
-                lookingForAJobDescription &&
-                <Descriptions.Item label='A job description'>
-                    {lookingForAJobDescription}</Descriptions.Item>
-            }
-        </Descriptions>)
+    return <div>
+        <img src={responseImage(props.photos)} alt='' />
+        <span>Name: {props.fullName}</span>
+        <span>About Me: {props.aboutMe}</span>
+        <span>{props.lookingForAJob ? 'Yes' : 'No'}</span>
+        {
+            props.lookingForAJobDescription &&
+            <p>Desctiption for a job:{props.lookingForAJobDescription}</p>
+        }
+    </div>
 }
