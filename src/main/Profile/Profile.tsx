@@ -2,16 +2,24 @@ import { FC } from 'react';
 import { ProfileType } from '../../types/ProfileType';
 import { responseImage } from '../Users/User';
 
-export const Profile: FC<ProfileType> = (props) => {
+interface ProfileWrapperType extends ProfileType {
+    authMe: boolean,
+    status: string
+}
+
+export const Profile: FC<ProfileWrapperType> = (
+    { aboutMe, photos, authMe, contacts, fullName, lookingForAJob, lookingForAJobDescription,status }
+) => {
 
     return <div>
-        <img src={responseImage(props.photos)} alt='' />
-        <span>Name: {props.fullName}</span>
-        <span>About Me: {props.aboutMe}</span>
-        <span>{props.lookingForAJob ? 'Yes' : 'No'}</span>
+        <img src={responseImage(photos)} alt='' />
+        <span>Name: {fullName}</span>
+        <span>Status: {status}</span>
+        <span>About Me: {aboutMe}</span>
+        <span>{lookingForAJob ? 'Yes' : 'No'}</span>
         {
-            props.lookingForAJobDescription &&
-            <p>Desctiption for a job:{props.lookingForAJobDescription}</p>
+            lookingForAJobDescription &&
+            <p>Desctiption for a job:{lookingForAJobDescription}</p>
         }
     </div>
 }

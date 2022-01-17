@@ -7,13 +7,17 @@ import { Profile } from './Profile'
 export const ProfileWrapper = () => {
 
     const { id } = useParams()
-    const { aboutMe, fullName, lookingForAJob, lookingForAJobDescription, contacts,photos}
+    const { aboutMe, fullName, lookingForAJob, lookingForAJobDescription, contacts,photos }
         = useTypeSelector(state => state.profile.profile)
+    const { status } = useTypeSelector(state => state.profile)
+    const { authId } = useTypeSelector(state => state.login)
     const { fieldProfile } = useActionsCreators()
 
     useEffect(() => {
         fieldProfile(Number(id))
     }, [id])
+
+    const authMe: boolean = authId === Number(id) ? true : false;
 
     return <Profile
         aboutMe={aboutMe}
@@ -22,5 +26,7 @@ export const ProfileWrapper = () => {
         lookingForAJobDescription={lookingForAJobDescription}
         contacts={contacts}
         photos={photos}
+        authMe={authMe}
+        status={status}
     />
 }
