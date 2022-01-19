@@ -1,13 +1,11 @@
 import { Button, Input } from 'antd'
 import Checkbox from 'antd/lib/checkbox/Checkbox'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useTypeSelector } from '../../hooks/useTypeSelector'
 import { SaveProfiletype } from '../../types/ProfileType'
 
 export const Settings: FC = () => {
-
-    const {} = useTypeSelector(state=>state)
 
     const { TextArea } = Input
     const { control, handleSubmit } = useForm()

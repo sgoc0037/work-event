@@ -11,10 +11,11 @@ export const ProfileWrapper = () => {
         = useTypeSelector(state => state.profile.profile)
     const { status } = useTypeSelector(state => state.profile)
     const { authId } = useTypeSelector(state => state.login)
-    const { fieldProfile } = useActionsCreators()
+    const { fieldProfile,fetchStatus } = useActionsCreators()
 
     useEffect(() => {
         fieldProfile(Number(id))
+        fetchStatus(Number(id))
     }, [id])
 
     const authMe: boolean = authId === Number(id) ? true : false;

@@ -13,9 +13,7 @@ export const fieldProfile = (id: number) => {
 export const fetchStatus = (id:number)=> {
     return async (dispatch:Dispatch<ProfileState>)=> {
         const response = await profileAPI.getStatus(id)
-        if(response.data.resultCode === 0) {
-            dispatch({type:ProfileActionType.SETSTATUS,status:response.data.status})
-        }
+        dispatch({type:ProfileActionType.SETSTATUS,status:response.data})
     }
 }
 
