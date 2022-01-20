@@ -11,7 +11,7 @@ export const ProfileWrapper = () => {
         = useTypeSelector(state => state.profile.profile)
     const { status } = useTypeSelector(state => state.profile)
     const { authId } = useTypeSelector(state => state.login)
-    const { fieldProfile,fetchStatus } = useActionsCreators()
+    const { fieldProfile,fetchStatus,savePhoto } = useActionsCreators()
 
     useEffect(() => {
         fieldProfile(Number(id))
@@ -29,5 +29,6 @@ export const ProfileWrapper = () => {
         photos={photos}
         authMe={authMe}
         status={status}
+        savePhoto={savePhoto}
     />
 }

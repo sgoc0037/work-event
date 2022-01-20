@@ -2,6 +2,7 @@ import { Button, Input } from 'antd'
 import Checkbox from 'antd/lib/checkbox/Checkbox'
 import React, { FC, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { useActionsCreators } from '../../hooks/useActionCreator'
 import { useTypeSelector } from '../../hooks/useTypeSelector'
 import { SaveProfiletype } from '../../types/ProfileType'
 
@@ -12,15 +13,17 @@ export const Settings: FC = () => {
     const {
         lookingForAJobDescription, lookingForAJob, aboutMe, fullName, contacts
     } = useTypeSelector(state => state.profile.profile)
+    const {saveProfile}=useActionsCreators()
 
     const [check, setCheck] = useState<boolean>(lookingForAJob)
     const onClick = () => setCheck(!check);
     const onSubmit: SubmitHandler<SaveProfiletype> = (data) => {
-        console.log(data)
+        debugger
+        saveProfile(data)
     }
 
 
-    return <form onSubmit={handleSubmit(onSubmit)}>
+    return <form>
         <Controller
             name="lookingForAJobDescription"
             control={control}

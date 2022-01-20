@@ -1,19 +1,23 @@
-import React from 'react';
-import { PopUpType } from '../types/types';
+import React, { FC } from 'react'
 import style from './PopUp.module.css';
 import cnBind from 'classnames/bind';
 
-let cx = cnBind.bind(style);
+let cx = cnBind.bind(style)
 
-const Popup:React.FC<PopUpType> = ({ toggle, setToggle, children }) => {
+interface PopupType {
+    changePopup:boolean;
+    setChangePopup:(value:boolean)=> void;
+}
 
-    let cxPopup = cx('popup', { active: toggle })
-    let cxPopupContent = cx('popup__content', { content__active: toggle })
+let Popup:FC<PopupType> = ({ changePopup, setChangePopup, children }) => {
+
+    let cxPopup = cx('popup', { active: changePopup })
+    let cxPopupContent = cx('popup__content', { content__active: changePopup })
 
     return (
         <div className={cxPopup} onClick={(e) => {
             e.stopPropagation()
-            setToggle(false)
+            setChangePopup(false)
         }}>
             <div className={cxPopupContent} onClick={(e) => e.stopPropagation()}>
                 {children}
