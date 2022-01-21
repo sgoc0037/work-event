@@ -9,6 +9,8 @@ import { LoginWrapper } from './Login/LoginWrapper';
 import { useActionsCreators } from '../hooks/useActionCreator';
 import { useTypeSelector } from '../hooks/useTypeSelector';
 import { Settings } from './Settings/Settings';
+import { WorkEvent } from './Calendar/Calendar';
+import Sidebar from '../sidebar/sidebar';
 
 const Main: FC = (props: any) => {
 
@@ -26,9 +28,11 @@ const Main: FC = (props: any) => {
     }, [authId])
 
     return <div className={style.main}>
+        <Sidebar />
         <Routes>
             <Route path={'/Color'} element={<Colors />} />
             <Route path={'/Login'} element={<LoginWrapper />} />
+            <Route path={'/Calendar'} element={<WorkEvent />} />
             <Route path={'/Profile/:id'} element={
                 <RequiredAuth>
                     <ProfileWrapper />

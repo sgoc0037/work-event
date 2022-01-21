@@ -30,29 +30,22 @@ const Sidebar = () => {
             theme="dark"
             inlineCollapsed={collapsed}
         >
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
+            <Menu.Item key="11" icon={<PieChartOutlined />}>
                 Option 1
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
+            <Menu.Item key="22" icon={<DesktopOutlined />}>
                 Option 2
             </Menu.Item>
-            <Menu.Item key="3" icon={<ContainerOutlined />}>
+            <Menu.Item key="33" icon={<ContainerOutlined />}>
                 Option 3
             </Menu.Item>
             <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
+                <Menu.Item key="6"><Link to='Calendar'>Calendar</Link></Menu.Item>
                 <Menu.Item key="5"><Link to='Color'>Color</Link></Menu.Item>
                 <Menu.Item key="4"><Link to='Login'>Login</Link></Menu.Item>
                 <Menu.Item key="3"><Link to={`Profile/${authId}`}>Profile</Link></Menu.Item>
                 <Menu.Item key="2"><Link to='Users'>Users</Link></Menu.Item>
                 <Menu.Item key="1"><Link to='Settings'>Settings</Link></Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <SubMenu key="sub3" title="Submenu">
-                    <Menu.Item key="11">Option 11</Menu.Item>
-                    <Menu.Item key="12">Option 12</Menu.Item>
-                </SubMenu>
             </SubMenu>
         </Menu>
     </div>

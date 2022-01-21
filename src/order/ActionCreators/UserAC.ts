@@ -2,11 +2,12 @@ import { Dispatch } from "redux";
 import { userAPI } from "../../API/REST-API";
 import { UserActionType, UserState } from "../../types/UserType";
 
-export const getUsers = () => {
+export const getUsers = (currentPage:number, userPage:number) => {
     return async (dispatch: Dispatch<UserState>) => {
-        let response = await userAPI.requestUsers();
+        let response = await userAPI.requestUsers(currentPage,userPage);
         if (response.error === null) {
             dispatch({ type: UserActionType.SETUSERS, users: response.items })
+            dispatch({type: UserActionType.SETTOTALCOUNT,totalCount:response.totalCount})
         }
     }
 }
