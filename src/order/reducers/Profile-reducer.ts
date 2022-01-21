@@ -22,7 +22,6 @@ const initialState: ProfileAction = {
         }
     },
     status: '',
-    authMeId: false,
     currentId: NaN
 }
 

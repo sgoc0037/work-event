@@ -2,7 +2,6 @@
 export interface ProfileAction {
     profile: ProfileType,
     status: string,
-    authMeId?: boolean,
     currentId: number
 }
 

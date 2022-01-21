@@ -13,12 +13,13 @@ export const Settings: FC = () => {
     const {
         lookingForAJobDescription, lookingForAJob, aboutMe, fullName, contacts
     } = useTypeSelector(state => state.profile.profile)
+    const { authId}=useTypeSelector(state=>state.login)
     const {saveProfile}=useActionsCreators()
 
     const [check, setCheck] = useState<boolean>(lookingForAJob)
     const onClick = () => setCheck(!check);
     const onSubmit: SubmitHandler<SaveProfiletype> = (data) => {
-        debugger
+        data.userId = authId
         saveProfile(data)
     }
 
@@ -63,6 +64,7 @@ export const Settings: FC = () => {
                     key={item}
                     name={`contacts.${item}`}
                     control={control}
+                    defaultValue={(contacts as any)[item]}
                     render={({ field }) => <Input {...field}
                         placeholder={item.toUpperCase()}
                     />}
