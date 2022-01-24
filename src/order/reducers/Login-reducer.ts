@@ -9,7 +9,6 @@ export let loginReducer = (state = initialState,action:LoginState):LoginAction=>
 	
 	switch(action.type) {
 		case LoginActionType.SETLOGIN:
-			console.log(state)
 			return {...state,...action}
 		default: return state;			
 	}

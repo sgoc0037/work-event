@@ -7,14 +7,12 @@ interface UsersProps<T> {
 
 export default function Users<T>(props: UsersProps<T>) {
 
-    const style = {
+    return <div style={{
         display: 'flex',
-        'flex-wrap': 'wrap',
-        'justify-content': 'space-around',
+        flexWrap: "wrap",
+        justifyContent: 'space-around',
         width: '100%'
-    }
-
-    return <div style={style}>
+    }}>
         {
             props.items.map(props.renderItem)
         }

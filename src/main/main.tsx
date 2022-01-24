@@ -9,13 +9,14 @@ import { LoginWrapper } from './Login/LoginWrapper';
 import { useActionsCreators } from '../hooks/useActionCreator';
 import { useTypeSelector } from '../hooks/useTypeSelector';
 import { Settings } from './Settings/Settings';
-import { WorkEvent } from './Calendar/Calendar';
 import Sidebar from '../sidebar/sidebar';
+import { Layout, Row } from 'antd';
+import { Content } from 'antd/lib/layout/layout';
 
 const Main: FC = (props: any) => {
 
     const { fetchLogin, fieldProfile } = useActionsCreators()
-    const { isAuth, authId } = useTypeSelector(state => state.login)
+    const { authId } = useTypeSelector(state => state.login)
 
     useEffect(() => {
         fetchLogin()
@@ -27,29 +28,34 @@ const Main: FC = (props: any) => {
         }
     }, [authId])
 
-    return <div className={style.main}>
+    return <Layout style={{
+        flexDirection: 'row'
+    }}>
         <Sidebar />
-        <Routes>
-            <Route path={'/Color'} element={<Colors />} />
-            <Route path={'/Login'} element={<LoginWrapper />} />
-            <Route path={'/Calendar'} element={<WorkEvent />} />
-            <Route path={'/Profile/:id'} element={
-                <RequiredAuth>
-                    <ProfileWrapper />
-                </RequiredAuth>
-            } />
-            <Route path={'/Users'} element={
-                <RequiredAuth>
-                    <UsersWrapper />
-                </RequiredAuth>
-            } />
-            <Route path={'/Settings'} element={
-                <RequiredAuth>
-                    <Settings />
-                </RequiredAuth>
-            } />
-        </Routes>
-    </div>
+        <Layout className="site-layout-background">
+            <Content>
+                <Routes>
+                    <Route path={'/Color'} element={<Colors />} />
+                    <Route path={'/Login'} element={<LoginWrapper />} />
+                    <Route path={'/Profile/:id'} element={
+                        <RequiredAuth>
+                            <ProfileWrapper />
+                        </RequiredAuth>
+                    } />
+                    <Route path={'/Users'} element={
+                        <RequiredAuth>
+                            <UsersWrapper />
+                        </RequiredAuth>
+                    } />
+                    <Route path={'/Settings'} element={
+                        <RequiredAuth>
+                            <Settings />
+                        </RequiredAuth>
+                    } />
+                </Routes>
+            </Content>
+        </Layout>
+    </Layout>
 }
 
 export default Main;
