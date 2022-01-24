@@ -10,7 +10,7 @@ import ProfileStatus from './Profile-status';
 interface ProfileWrapperType extends ProfileType {
     authMe: boolean;
     status: string;
-    savePhoto:(file:Blob)=>void;
+    savePhoto: (file: Blob) => void;
 }
 
 interface FormPhotoType {
@@ -18,13 +18,13 @@ interface FormPhotoType {
 }
 
 export const Profile: FC<ProfileWrapperType> = (
-    { aboutMe, photos, authMe, contacts, fullName, lookingForAJob, lookingForAJobDescription, status,savePhoto }
+    { aboutMe, photos, authMe, contacts, fullName, lookingForAJob, lookingForAJobDescription, status, savePhoto }
 ) => {
 
     const { register, handleSubmit } = useForm<FormPhotoType>()
     const [toggle, setToggle] = useState(false);
 
-    const sendPhoto:SubmitHandler<FormPhotoType>=(data)=> {
+    const sendPhoto: SubmitHandler<FormPhotoType> = (data) => {
         savePhoto(data.changePhoto[0])
     }
 
@@ -43,6 +43,10 @@ export const Profile: FC<ProfileWrapperType> = (
                         <b>Dowload new avatar:<input {...register('changePhoto')} type='file' /></b>
                         <Button onClick={handleSubmit(sendPhoto)}>Send</Button>
                     </form>
+                }
+                {
+                    !authMe &&
+                    <img src={responseImage(photos)} alt='' />
                 }
             </Popup>
         </div>
